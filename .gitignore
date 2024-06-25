@@ -1,0 +1,17 @@
+/*
+
+!.config/
+!.githooks/
+!.github/
+!.scripts/
+!.vscode/
+
+!.gitconfig
+!.gitignore
+
+!go.mod
+!go.sum
+
+!LICENSE
+
+!Makefile

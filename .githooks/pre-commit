@@ -1,0 +1,35 @@
+source ./.scripts/_common.sh
+
+printf "${label} RUN ${WHITE}PRE-COMMIT${RESET} HOOK\n\n"
+
+lint_code() {
+	printf "${label} Execute: ${WHITE}make lint-code${RESET}\n"
+
+	git stash --keep-index --all --quiet
+	make lint-code
+	status=$?
+	git stash pop --quiet
+
+	printf "\n"
+
+	if [ $status -ne 0 ]; then
+		exit $status
+	fi
+}
+
+test_code() {
+	printf "${label} Execute: ${WHITE}make test${RESET}\n"
+
+	git stash --keep-index --all --quiet
+	make test
+	status=$?
+	git stash pop --quiet
+
+	printf "\n"
+
+	if [ $status -ne 0 ]; then
+		exit $status
+	fi
+}
+
+lint_code && test_code

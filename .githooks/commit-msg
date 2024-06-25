@@ -1,0 +1,12 @@
+source ./.scripts/_common.sh
+
+printf "${label} RUN ${WHITE}COMMIT-MSG${RESET} HOOK\n\n"
+set -e
+
+printf "${label} Execute: ${WHITE}./.scripts/add-emoji-to-commit-message.sh${RESET}\n"
+./.scripts/add-emoji-to-commit-message.sh $1
+printf "\n"
+
+printf "${label} Execute: ${WHITE}make lint-commit-message${RESET}\n"
+make lint-commit-message
+printf "\n"
