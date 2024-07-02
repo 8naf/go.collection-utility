@@ -1,0 +1,36 @@
+name: Go Linting and Testing
+on: pull_request
+env:
+    COVERAGE_PROFILE: coverage.out
+jobs:
+    go-linting-and-testing:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                go-version: ${{ fromJson(vars.GO_VERSIONS) }}
+            fail-fast: false
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup Go
+              uses: actions/setup-go@v5
+              with:
+                  go-version: ${{ matrix.go-version }}
+
+            - name: Lint Code
+              uses: golangci/golangci-lint-action@v6
+              with:
+                  version: ${{ vars.GOLANGCI_LINT_VERSION }}
+                  args: --config ${{ vars.GOLANGCI_LINT_CONFIG_FILE_PATH }} --verbose
+
+            - name: Test Code
+              run: bash ./.scripts/test-code.sh ${{ env.COVERAGE_PROFILE }}
+
+            - name: Check Code Coverage
+              run: >
+                  bash ./.scripts/check-code-coverage.sh
+                  ${{ env.COVERAGE_PROFILE }}
+                  ${{ vars.CODE_COVERAGE_THRESHOLD }}

@@ -1,0 +1,10 @@
+source ./.scripts/_common.sh
+
+printf "${BLUE}COMMIT-MSG HOOK${RESET}\n"
+hline ${BLUE}
+set -e
+
+./.scripts/add-emoji-to-commit-message.sh $1
+hline ${BLUE}
+make lint-commit-message -- file=$1
+hline ${BLUE}

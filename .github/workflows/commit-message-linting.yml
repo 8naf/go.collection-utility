@@ -1,0 +1,28 @@
+name: Commit Message Linting
+on: pull_request
+jobs:
+    commit-message-linting:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ vars.NODE_VERSION }}
+
+            - name: Install Dependencies
+              run: >
+                  npm install --no-package-lock --global
+                  @commitlint/cli @commitlint/config-conventional
+
+            - name: Run Commitlint
+              run: >
+                  commitlint
+                  --from ${{ github.event.pull_request.base.sha }}
+                  --to ${{ github.event.pull_request.head.sha }}
+                  --config ${{ vars.COMMITLINT_CONFIG_FILE_PATH }}
+                  --verbose

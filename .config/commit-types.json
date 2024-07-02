@@ -1,0 +1,77 @@
+[
+	{
+		"type": "init",
+		"emoji": ":birthday:",
+		"description": "🎂 The project initiation"
+	},
+	{
+		"type": "build",
+		"emoji": ":package:",
+		"description": "📦 Changes that affect the build system or external dependencies (example scopes: gulp, broccoli)"
+	},
+	{
+		"type": "ci",
+		"emoji": ":recycle:",
+		"description": "♻️ Changes that affect the CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)"
+	},
+	{
+		"type": "chore",
+		"emoji": ":toolbox:",
+		"description": "🧰 Other changes that do not modify any go files"
+	},
+	{
+		"type": "docs",
+		"emoji": ":scroll:",
+		"description": "📜 Documentation only changes"
+	},
+	{
+		"type": "feat",
+		"emoji": ":sparkles:",
+		"description": "✨ A new feature"
+	},
+	{
+		"type": "remove",
+		"emoji": ":fire:",
+		"description": "🔥 A feature removal"
+	},
+	{
+		"type": "fix",
+		"emoji": ":bug:",
+		"description": "🐛 A bug fix"
+	},
+	{
+		"type": "release",
+		"emoji": ":bookmark:",
+		"description": "🔖 A version releasing"
+	},
+	{
+		"type": "perf",
+		"emoji": ":zap:",
+		"description": "⚡️ Code changes that improves performance"
+	},
+	{
+		"type": "refactor",
+		"emoji": ":rocket:",
+		"description": "🚀 Code changes that improves code readability, scalability, and maintainability"
+	},
+	{
+		"type": "merge",
+		"emoji": ":twisted_rightwards_arrows:",
+		"description": "🔀 Merging branches"
+	},
+	{
+		"type": "revert",
+		"emoji": ":rewind:",
+		"description": "⏪ Reverting a previous commit"
+	},
+	{
+		"type": "style",
+		"emoji": ":art:",
+		"description": "🎨 Code changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"
+	},
+	{
+		"type": "test",
+		"emoji": ":test_tube:",
+		"description": "🧪 Adding missing tests or correcting existing tests"
+	}
+]
